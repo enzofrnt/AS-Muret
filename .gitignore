@@ -1,0 +1,35 @@
+# Fichiers de dépendances
+node_modules/
+
+# Fichiers de compilation
+dist/
+tmp/
+out-tsc/
+
+# Fichiers de cache
+*.cache
+*.log
+
+# Fichiers et dossiers spécifiques à l'environnement de développement
+src/environments/environment.prod.ts
+src/environments/environment.ts
+
+# Fichiers spécifiques à macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Fichiers de configuration de l'éditeur de texte/IDE
+*.sublime-workspace
+*.idea/
+*.vscode/
+*.swp
+*.swo
+
+# Fichiers de sauvegarde créés par macOS
+._*
+.Spotlight-V100
+.Trashes
+
+# Fichiers de configuration Angular
+angular.json
