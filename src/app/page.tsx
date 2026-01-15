@@ -69,6 +69,8 @@ export default function Home(props: any) {
   const logoClickCount = useRef(0);
   const [carouselOpen, setCarouselOpen] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [detartelageOpen, setDetartelageOpen] = useState(false);
+  const detartelageClickCount = useRef(0);
 
   useEffect(() => {
     if (!secretActive) return;
@@ -100,6 +102,13 @@ export default function Home(props: any) {
     setCarouselIndex(
       (current) => (current - 1 + carouselImages.length) % carouselImages.length
     );
+  };
+  const handleDetartelageClick = () => {
+    detartelageClickCount.current += 1;
+    if (detartelageClickCount.current >= 20 && !detartelageOpen) {
+      detartelageClickCount.current = 0;
+      setDetartelageOpen(true);
+    }
   };
 
   return (
@@ -308,7 +317,18 @@ export default function Home(props: any) {
           <h2 className="text-2xl font-semibold">Contact</h2>
           <div className="mt-6 grid gap-6 text-sm text-zinc-600 sm:grid-cols-2">
             <div>
-              <p className="text-base font-semibold text-zinc-900">
+              <p
+                className="text-base font-semibold text-zinc-900"
+                onClick={handleDetartelageClick}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    handleDetartelageClick();
+                  }
+                }}
+                aria-label="Déclencher Détartelage"
+              >
                 Yannick Ferré
               </p>
               <p>Président</p>
@@ -423,6 +443,32 @@ export default function Home(props: any) {
             <div className="px-6 py-4 text-center text-sm text-zinc-600">
               {carouselImages[carouselIndex].alt}
             </div>
+          </div>
+        </div>
+      )}
+      {detartelageOpen && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-zinc-900/70 px-6 py-10"
+          onClick={() => setDetartelageOpen(false)}
+          role="button"
+          tabIndex={-1}
+          aria-label="Fermer Détartelage"
+        >
+          <div
+            className="relative w-full max-w-4xl rounded-3xl bg-white px-8 py-16 text-center shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setDetartelageOpen(false)}
+              aria-label="Fermer la fenêtre"
+              className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white text-lg font-semibold text-zinc-800 shadow-md transition hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              ✕
+            </button>
+            <p className="detartelage-spin text-5xl font-black uppercase tracking-wide text-blue-700 sm:text-6xl lg:text-7xl">
+              Détartelage
+            </p>
           </div>
         </div>
       )}

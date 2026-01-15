@@ -44,3 +44,16 @@ body {
   border: 2px solid transparent;
   background-clip: padding-box;
 }
+
+.detartelage-spin {
+  animation: detartelage-spin 12s linear infinite;
+}
+
+@keyframes detartelage-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
