@@ -19,7 +19,7 @@ export default function SiteHeader({ activePage, onLogoClick }: SiteHeaderProps)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="flex flex-col gap-4 min-[891px]:flex-row min-[891px]:items-center min-[891px]:justify-between">
+    <header className="relative flex flex-col gap-4 min-[891px]:flex-row min-[891px]:items-center min-[891px]:justify-between">
       <div className="flex items-center justify-between gap-4 min-[891px]:justify-start">
         <div className="flex flex-wrap items-center gap-3 min-[480px]:gap-4">
           {onLogoClick ? (
@@ -64,7 +64,9 @@ export default function SiteHeader({ activePage, onLogoClick }: SiteHeaderProps)
       </div>
       <nav
         id="site-nav"
-        className={`flex w-full flex-col gap-2 ${isMenuOpen ? "flex" : "hidden"} min-[891px]:flex min-[891px]:w-auto min-[891px]:flex-row min-[891px]:flex-wrap min-[891px]:justify-end`}
+        className={`${
+          isMenuOpen ? "flex" : "hidden"
+        } absolute left-0 right-0 top-full z-50 w-full flex-col gap-2 rounded-2xl border border-blue-100 bg-white p-3 shadow-lg min-[891px]:static min-[891px]:flex min-[891px]:w-auto min-[891px]:flex-row min-[891px]:flex-wrap min-[891px]:justify-end min-[891px]:border-none min-[891px]:bg-transparent min-[891px]:p-0 min-[891px]:shadow-none`}
       >
         <Link
           href="/"
