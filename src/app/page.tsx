@@ -106,7 +106,7 @@ export default function Home(props: any) {
     <div className="bg-zinc-50 text-zinc-900">
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-14 sm:px-10 lg:gap-16 lg:px-16">
         <SiteHeader activePage="home" onLogoClick={handleLogoClick} />
-        <section className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+        <section className="flex flex-col gap-10 min-[1160px]:flex-row min-[1160px]:items-center min-[1160px]:justify-between">
           <div className="flex flex-col gap-6">
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
               AS Muret Cycliste
@@ -116,7 +116,7 @@ export default function Home(props: any) {
               rassemble passion, performance et convivialité autour de la route,
               du VTT, du cyclocross, du cyclosport et du gravel.
             </p>
-            <div className="flex flex-col gap-4 sm:flex-row sm:flex-nowrap">
+            <div className="flex flex-col gap-4 min-[711px]:flex-row min-[711px]:flex-nowrap">
               <Link
                 href="/rejoindre"
                 className="flex items-center justify-center whitespace-nowrap rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800"
@@ -139,7 +139,7 @@ export default function Home(props: any) {
               </a>
             </div>
           </div>
-          <div className="grid w-full grid-cols-2 gap-4 rounded-3xl bg-white p-6 shadow-sm lg:max-w-md">
+          <div className="grid w-full grid-cols-2 gap-4 rounded-3xl bg-white p-6 shadow-sm min-[1160px]:max-w-md">
             <div className="rounded-2xl bg-zinc-50 p-4">
               <p className="text-2xl font-semibold">50</p>
               <p className="text-sm text-zinc-600">adhérents</p>
