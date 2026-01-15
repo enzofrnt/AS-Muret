@@ -197,7 +197,7 @@ export default function RejoindrePage() {
 
   return (
     <div className="bg-zinc-50 text-zinc-900">
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-14 sm:px-10 lg:gap-16 lg:px-16">
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 pt-8 pb-14 sm:px-10 lg:gap-16 lg:px-16">
         <SiteHeader activePage="rejoindre" />
 
         <div>

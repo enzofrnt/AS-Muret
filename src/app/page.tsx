@@ -104,7 +104,7 @@ export default function Home(props: any) {
 
   return (
     <div className="bg-zinc-50 text-zinc-900">
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-14 sm:px-10 lg:gap-16 lg:px-16">
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 pt-8 pb-14 sm:px-10 lg:gap-16 lg:px-16">
         <SiteHeader activePage="home" onLogoClick={handleLogoClick} />
         <section className="flex flex-col gap-10 min-[1160px]:flex-row min-[1160px]:items-center min-[1160px]:justify-between">
           <div className="flex flex-col gap-6">
