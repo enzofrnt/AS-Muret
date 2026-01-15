@@ -71,6 +71,8 @@ export default function Home(props: any) {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [detartelageOpen, setDetartelageOpen] = useState(false);
   const detartelageClickCount = useRef(0);
+  const [vttSecretOpen, setVttSecretOpen] = useState(false);
+  const vttClickCount = useRef(0);
 
   useEffect(() => {
     if (!secretActive) return;
@@ -108,6 +110,13 @@ export default function Home(props: any) {
     if (detartelageClickCount.current >= 20 && !detartelageOpen) {
       detartelageClickCount.current = 0;
       setDetartelageOpen(true);
+    }
+  };
+  const handleVttClick = () => {
+    vttClickCount.current += 1;
+    if (vttClickCount.current >= 50 && !vttSecretOpen) {
+      vttClickCount.current = 0;
+      setVttSecretOpen(true);
     }
   };
 
@@ -185,6 +194,19 @@ export default function Home(props: any) {
                 <span
                   key={discipline}
                   className="rounded-full bg-blue-50 px-4 py-1 text-sm font-medium text-blue-700"
+                  onClick={discipline === "VTT" ? handleVttClick : undefined}
+                  onKeyDown={
+                    discipline === "VTT"
+                      ? (event) => {
+                          if (event.key === "Enter" || event.key === " ") {
+                            handleVttClick();
+                          }
+                        }
+                      : undefined
+                  }
+                  role={discipline === "VTT" ? "button" : undefined}
+                  tabIndex={discipline === "VTT" ? 0 : undefined}
+                  aria-label={discipline === "VTT" ? "Secret VTT" : undefined}
                 >
                   {discipline}
                 </span>
@@ -469,6 +491,38 @@ export default function Home(props: any) {
             <p className="detartelage-spin text-5xl font-black uppercase tracking-wide text-blue-700 sm:text-6xl lg:text-7xl">
               Détartelage
             </p>
+          </div>
+        </div>
+      )}
+      {vttSecretOpen && (
+        <div
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-zinc-900/70 px-6 py-10"
+          onClick={() => setVttSecretOpen(false)}
+          role="button"
+          tabIndex={-1}
+          aria-label="Fermer la vidéo secrète"
+        >
+          <div
+            className="relative w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setVttSecretOpen(false)}
+              aria-label="Fermer la fenêtre"
+              className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white text-lg font-semibold text-zinc-800 shadow-md transition hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              ✕
+            </button>
+            <div className="relative mx-auto w-full max-w-[min(960px,92vw)] rounded-2xl bg-black">
+              <video
+                className="max-h-[70vh] w-full object-contain"
+                src="/video/glissade.mp4"
+                controls
+                autoPlay
+                playsInline
+              />
+            </div>
           </div>
         </div>
       )}
