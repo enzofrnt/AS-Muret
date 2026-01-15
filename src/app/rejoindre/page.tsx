@@ -460,13 +460,14 @@ export default function RejoindrePage() {
                               htmlFor={`participant-age-${participant.id}`}
                               className="block text-sm font-medium text-zinc-700"
                             >
-                              Âge
+                              Âge *
                             </label>
                             <input
                               type="number"
                               id={`participant-age-${participant.id}`}
                               min="1"
                               max="120"
+                              required
                               value={participant.age}
                               onChange={(event) =>
                                 handleParticipantChange(

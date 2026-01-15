@@ -34,14 +34,8 @@ export default function SiteFooter() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[10px] text-zinc-400">•</span>
-            <a href="mailto:enzofournet31@gmail.com" className="hover:text-zinc-600">
-              enzofournet31@gmail.com
-            </a>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] text-zinc-400">•</span>
-            <a href="tel:+33783723926" className="hover:text-zinc-600">
-              07 83 72 39 26
+            <a href="mailto:contact@enzo-frnt.fr" className="hover:text-zinc-600">
+              contact@enzo-frnt.fr
             </a>
           </div>
         </div>

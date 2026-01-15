@@ -30,7 +30,7 @@ export default function ActivitesPage(props: any) {
             <div className="mt-4 space-y-4 text-base leading-7 text-zinc-600">
               <p>
                 L&apos;école VTT de l&apos;AS Muret Cycliste accueille chaque année
-                environ 20 jeunes de 10 à 17 ans. Nos éducateurs diplômés FFC
+                environ 20 jeunes de 10 à tant que c&apos;est possible. Nos éducateurs diplômés FFC
                 forment les jeunes aux bases du pilotage, de la sécurité et de
                 la compétition.
               </p>
@@ -43,13 +43,30 @@ export default function ActivitesPage(props: any) {
                   <li>• <strong>Effectif :</strong> ~20 jeunes par saison</li>
                   <li>• <strong>Formation :</strong> Pilotage, sécurité, compétition</li>
                   <li>• <strong>Éducateurs :</strong> Diplômés FFC</li>
+                  <li>• <strong>Organisation :</strong> Semaine pair séance technique, semaine impaire séance compétition</li>
                 </ul>
+              </div>
+              <div className="rounded-2xl bg-zinc-50 p-4">
+                <h3 className="mb-2 font-semibold text-zinc-900">
+                  Objectifs
+                </h3>
+                <ul className="space-y-2 text-sm">
+                  <li>• Développer la maîtrise du VTT en sécurité</li>
+                  <li>• Apprendre les bases du pilotage en terrain varié</li>
+                  <li>• Construire l&apos;esprit d&apos;équipe et l&apos;autonomie</li>
+                  <li>• Préparer aux sorties et compétitions du club</li>
+                </ul>
+              </div>
+              <div className="rounded-2xl bg-blue-50 p-4">
+                <h3 className="mb-2 font-semibold text-blue-900">Stage VTT</h3>
+                <p className="text-sm text-blue-800">
+                  Le club organise généralement un stage en juin pour une
+                  initiation DH/enduro, pour le moment à Loudenvielle.
+                </p>
               </div>
               <p className="text-sm">
                 Les entraînements ont lieu régulièrement et permettent aux jeunes
-                de progresser dans un cadre sécurisé et bienveillant. Le club
-                participe également à des stages VTT, notamment à Loudenvielle
-                pour la descente.
+                de progresser dans un cadre sécurisé et bienveillant.
               </p>
             </div>
           </div>
@@ -107,6 +124,17 @@ export default function ActivitesPage(props: any) {
                   <li>• <strong>Groupes :</strong> Niveaux adaptés</li>
                   <li>• <strong>Encadrement :</strong> Éducateurs diplômés</li>
                   <li>• <strong>Parcours :</strong> Variés selon les saisons</li>
+                </ul>
+              </div>
+              <div className="rounded-2xl bg-zinc-50 p-4">
+                <h3 className="mb-3 font-semibold text-zinc-900">
+                  Objectifs
+                </h3>
+                <ul className="space-y-2 text-sm">
+                  <li>• Améliorer l&apos;endurance et la régularité</li>
+                  <li>• Progresser en groupe selon le niveau</li>
+                  <li>• Découvrir des parcours variés en sécurité</li>
+                  <li>• Préparer les compétitions et cyclosportives</li>
                 </ul>
               </div>
             </div>
