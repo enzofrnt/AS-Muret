@@ -210,7 +210,7 @@ export default function RejoindrePage() {
           </p>
         </div>
 
-        <section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+        <section className="grid gap-10">
           <div className="space-y-6">
             <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
               <h2 className="text-2xl font-semibold">Comment nous rejoindre ?</h2>
@@ -248,7 +248,7 @@ export default function RejoindrePage() {
                   Le club propose plusieurs disciplines pour répondre à tous les
                   goûts :
                 </p>
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="grid gap-3">
                   {["Route", "VTT", "Cyclocross", "Cyclosport", "Gravel"].map(
                     (discipline) => (
                       <div
@@ -289,7 +289,7 @@ export default function RejoindrePage() {
                   <p className="mt-1 text-xs text-zinc-500">
                     Cette personne sera notre contact principal.
                   </p>
-                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  <div className="mt-4 grid gap-4">
                     <div>
                       <label
                         htmlFor="contact-nom"
@@ -400,7 +400,7 @@ export default function RejoindrePage() {
                             Retirer
                           </button>
                         </div>
-                        <div className="mt-3 grid gap-4 sm:grid-cols-2">
+                        <div className="mt-3 grid gap-4">
                           <div>
                             <label
                               htmlFor={`participant-nom-${participant.id}`}
@@ -529,7 +529,7 @@ export default function RejoindrePage() {
                           <span className="block text-sm font-medium text-zinc-700">
                             Activités d&apos;intérêt
                           </span>
-                          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                          <div className="mt-2 grid gap-2">
                             {activityOptions.map((option) => (
                               <label
                                 key={`${participant.id}-${option.value}`}
@@ -606,7 +606,7 @@ export default function RejoindrePage() {
 
         <section className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
           <h2 className="text-2xl font-semibold">Contact direct</h2>
-          <div className="mt-6 grid gap-6 text-sm text-zinc-600 sm:grid-cols-2">
+          <div className="mt-6 grid gap-6 text-sm text-zinc-600">
             <div>
               <p className="text-base font-semibold text-zinc-900">
                 Yannick Ferré
