@@ -37,15 +37,15 @@ const projects = [
 ];
 
 const carouselImages = [
-  { src: "/carousel/1.JPG", alt: "Sortie route en groupe" },
-  { src: "/carousel/2.JPG", alt: "Sortie VTT en forêt" },
-  { src: "/carousel/3.JPG", alt: "Séance de cyclocross" },
-  { src: "/carousel/5.JPG", alt: "Course régionale" },
-  { src: "/carousel/6.JPG", alt: "Entraînement collectif" },
-  { src: "/carousel/7.JPG", alt: "Stage club" },
-  { src: "/carousel/8.JPG", alt: "Jeunes à l'école VTT" },
-  { src: "/carousel/9.JPG", alt: "Podium et remise des prix" },
-  { src: "/carousel/10.jpg", alt: "Sortie gravel" },
+  { src: "/carousel/1.JPG", alt: "Cadet Junior Tour de France 2025" },
+  { src: "/carousel/2.JPG", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
+  { src: "/carousel/3.JPG", alt: "Stage VTT à Loudenvielle - Haut des pistes de DH" },
+  { src: "/carousel/5.JPG", alt: "Opération casque jaunes - Tour de France 2025" },
+  { src: "/carousel/6.JPG", alt: "Photo de groupe VTT - Foret de Eaunes" },
+  { src: "/carousel/7.JPG", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
+  { src: "/carousel/8.JPG", alt: "Interclubs VTT - Lagrâce-Dieu" },
+  { src: "/carousel/9.JPG", alt: "Photo de groupe - Stage VTT à Loudenvielle" },
+  { src: "/carousel/10.jpg", alt: "Photo coureur - FestiBike 2023" },
 ];
 
 const secretImages = [
@@ -60,6 +60,8 @@ export default function Home() {
   const [secretActive, setSecretActive] = useState(false);
   const [secretIndex, setSecretIndex] = useState(0);
   const logoClickCount = useRef(0);
+  const [carouselOpen, setCarouselOpen] = useState(false);
+  const [carouselIndex, setCarouselIndex] = useState(0);
 
   useEffect(() => {
     if (!secretActive) return;
@@ -80,6 +82,18 @@ export default function Home() {
   };
 
   const secretFrame = secretSequence[secretIndex % secretSequence.length];
+  const handleCarouselOpen = (index: number) => {
+    setCarouselIndex(index);
+    setCarouselOpen(true);
+  };
+  const handleCarouselNext = () => {
+    setCarouselIndex((current) => (current + 1) % carouselImages.length);
+  };
+  const handleCarouselPrev = () => {
+    setCarouselIndex(
+      (current) => (current - 1 + carouselImages.length) % carouselImages.length
+    );
+  };
 
   return (
     <div className="bg-zinc-50 text-zinc-900">
@@ -220,20 +234,27 @@ export default function Home() {
             </span>
           </div>
           <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pr-2 [scrollbar-width:thin]">
-            {carouselImages.map((image) => (
+            {carouselImages.map((image, index) => (
               <div
                 key={image.src}
                 className="min-w-[220px] snap-start overflow-hidden rounded-2xl bg-zinc-100 shadow-sm sm:min-w-[260px]"
               >
-                <div className="relative h-40 w-full sm:h-48">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(min-width: 640px) 260px, 220px"
-                    className="object-cover"
-                  />
-                </div>
+                <button
+                  type="button"
+                  onClick={() => handleCarouselOpen(index)}
+                  aria-label={`Agrandir ${image.alt}`}
+                  className="block w-full"
+                >
+                  <div className="relative h-40 w-full sm:h-48">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(min-width: 640px) 260px, 220px"
+                      className="object-cover"
+                    />
+                  </div>
+                </button>
               </div>
             ))}
           </div>
@@ -347,6 +368,57 @@ export default function Home() {
                 sizes="(min-width: 640px) 640px, 100vw"
                 className="object-cover"
               />
+            </div>
+          </div>
+        </div>
+      )}
+      {carouselOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-900/70 px-6 py-10"
+          onClick={() => setCarouselOpen(false)}
+          role="button"
+          tabIndex={-1}
+          aria-label="Fermer l'aperçu"
+        >
+          <div
+            className="relative w-full max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setCarouselOpen(false)}
+              aria-label="Fermer l'aperçu"
+              className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white text-lg font-semibold text-zinc-800 shadow-md transition hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              ✕
+            </button>
+            <button
+              type="button"
+              onClick={handleCarouselPrev}
+              aria-label="Image précédente"
+              className="absolute left-4 top-1/2 z-10 -translate-y-1/2 grid h-11 w-11 -translate-x-0 place-items-center rounded-full bg-white text-2xl font-semibold text-zinc-800 shadow-md transition hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={handleCarouselNext}
+              aria-label="Image suivante"
+              className="absolute right-4 top-1/2 z-10 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-white text-2xl font-semibold text-zinc-800 shadow-md transition hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              ›
+            </button>
+            <div className="relative h-[70vh] w-full bg-zinc-100">
+              <Image
+                src={carouselImages[carouselIndex].src}
+                alt={carouselImages[carouselIndex].alt}
+                fill
+                sizes="(min-width: 1024px) 960px, 100vw"
+                className="object-contain"
+              />
+            </div>
+            <div className="px-6 py-4 text-center text-sm text-zinc-600">
+              {carouselImages[carouselIndex].alt}
             </div>
           </div>
         </div>
