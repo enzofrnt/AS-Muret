@@ -33,10 +33,22 @@ const projects = [
   "Besoins matériels : vélos, tenues, casques, matériel pédagogique",
 ];
 
+const carouselImages = [
+  { src: "/carousel/1.JPG", alt: "Sortie route en groupe" },
+  { src: "/carousel/2.JPG", alt: "Sortie VTT en forêt" },
+  { src: "/carousel/3.JPG", alt: "Séance de cyclocross" },
+  { src: "/carousel/5.JPG", alt: "Course régionale" },
+  { src: "/carousel/6.JPG", alt: "Entraînement collectif" },
+  { src: "/carousel/7.JPG", alt: "Stage club" },
+  { src: "/carousel/8.JPG", alt: "Jeunes à l'école VTT" },
+  { src: "/carousel/9.JPG", alt: "Podium et remise des prix" },
+  { src: "/carousel/10.jpg", alt: "Sortie gravel" },
+];
+
 export default function Home() {
   return (
     <div className="bg-zinc-50 text-zinc-900">
-      <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-20 px-6 py-14 sm:px-10 lg:px-16">
+      <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-12 px-6 py-14 sm:px-10 lg:gap-16 lg:px-16">
         <section className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4">
@@ -150,6 +162,38 @@ export default function Home() {
                 <li key={event}>• {event}</li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-semibold">Nos activités en images</h2>
+              <p className="mt-2 text-sm text-zinc-600">
+                Route, VTT, cyclocross, stages et vie du club.
+              </p>
+            </div>
+            <span className="hidden text-xs font-semibold uppercase tracking-wide text-zinc-400 sm:block">
+              Faites défiler
+            </span>
+          </div>
+          <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pr-2 [scrollbar-width:thin]">
+            {carouselImages.map((image) => (
+              <div
+                key={image.src}
+                className="min-w-[220px] snap-start overflow-hidden rounded-2xl bg-zinc-100 shadow-sm sm:min-w-[260px]"
+              >
+                <div className="relative h-40 w-full sm:h-48">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 640px) 260px, 220px"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
