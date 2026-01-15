@@ -111,6 +111,9 @@ export default function Home(props: any) {
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
               AS Muret Cycliste
             </h1>
+            <span className="inline-flex w-fit rounded-full bg-blue-50 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700 sm:text-sm">
+              Club cycliste & VTT depuis 1962
+            </span>
             <p className="max-w-2xl text-lg leading-8 text-zinc-600">
               Club multigénérationnel orienté compétition, l&apos;AS Muret Cycliste
               rassemble passion, performance et convivialité autour de la route,

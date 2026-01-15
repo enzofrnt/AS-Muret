@@ -21,7 +21,7 @@ export default function SiteHeader({ activePage, onLogoClick }: SiteHeaderProps)
   return (
     <header className="flex flex-col gap-4 min-[891px]:flex-row min-[891px]:items-center min-[891px]:justify-between">
       <div className="flex items-center justify-between gap-4 min-[891px]:justify-start">
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-3 min-[480px]:gap-4">
           {onLogoClick ? (
             <button
               type="button"
@@ -51,9 +51,6 @@ export default function SiteHeader({ activePage, onLogoClick }: SiteHeaderProps)
               />
             </Link>
           )}
-          <span className="whitespace-nowrap rounded-full bg-blue-50 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-blue-700">
-            Club cycliste & VTT depuis 1962
-          </span>
         </div>
         <button
           type="button"
