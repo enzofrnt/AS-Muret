@@ -517,7 +517,7 @@ export default function Home(props: any) {
             <div className="relative mx-auto w-full max-w-[min(960px,92vw)] rounded-2xl bg-black">
               <video
                 className="max-h-[70vh] w-full object-contain"
-                src="/video/glissade.mp4"
+                src="/video/secret/glissade.mp4"
                 controls
                 autoPlay
                 playsInline
