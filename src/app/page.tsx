@@ -314,16 +314,32 @@ export default function Home() {
                 Yannick Ferré
               </p>
               <p>Président</p>
-              <p>Tél. 06 08 52 28 39</p>
-              <p>yannickferre31@orange.fr</p>
+              <p>
+                <a href="tel:+33608522839" className="hover:text-blue-700">
+                  Tél. 06 08 52 28 39
+                </a>
+              </p>
+              <p>
+                <a href="mailto:yannickferre31@orange.fr" className="hover:text-blue-700">
+                  yannickferre31@orange.fr
+                </a>
+              </p>
             </div>
             <div>
               <p className="text-base font-semibold text-zinc-900">
                 Gauthier Lopez-Camoche
               </p>
               <p>Communication / relation</p>
-              <p>Tél. 06 83 98 87 57</p>
-              <p>glopezcamoche@gmail.com</p>
+              <p>
+                <a href="tel:+33683988757" className="hover:text-blue-700">
+                  Tél. 06 83 98 87 57
+                </a>
+              </p>
+              <p>
+                <a href="mailto:glopezcamoche@gmail.com" className="hover:text-blue-700">
+                  glopezcamoche@gmail.com
+                </a>
+              </p>
             </div>
           </div>
         </section>
@@ -334,8 +350,14 @@ export default function Home() {
               AS Muret Cycliste · Route · VTT · Cyclocross · Cyclosport · Gravel
             </span>
             <span className="text-xs text-zinc-400">
-              Site réalisé par Enzo Fournet · enzofournet31@gmail.com · 07 83 72
-              39 26
+              Site réalisé par Enzo Fournet ·{" "}
+              <a href="mailto:enzofournet31@gmail.com" className="hover:text-zinc-600">
+                enzofournet31@gmail.com
+              </a>{" "}
+              ·{" "}
+              <a href="tel:+33783723926" className="hover:text-zinc-600">
+                07 83 72 39 26
+              </a>
             </span>
           </div>
         </footer>
