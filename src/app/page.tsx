@@ -39,21 +39,21 @@ const projects = [
 ];
 
 const carouselImages = [
-  { src: "/carousel/1.JPG", alt: "Cadet Junior Tour de France 2025" },
-  { src: "/carousel/2.JPG", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
-  { src: "/carousel/3.JPG", alt: "Stage VTT à Loudenvielle - Haut des pistes de DH" },
-  { src: "/carousel/5.JPG", alt: "Opération casque jaunes - Tour de France 2025" },
-  { src: "/carousel/6.JPG", alt: "Photo de groupe VTT - Foret de Eaunes" },
-  { src: "/carousel/7.JPG", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
-  { src: "/carousel/8.JPG", alt: "Interclubs VTT - Lagrâce-Dieu" },
-  { src: "/carousel/9.JPG", alt: "Photo de groupe - Stage VTT à Loudenvielle" },
-  { src: "/carousel/10.jpg", alt: "Photo coureur - FestiBike 2023" },
+  { src: "/carousel/1.avif", alt: "Cadet Junior Tour de France 2025" },
+  { src: "/carousel/2.avif", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
+  { src: "/carousel/3.avif", alt: "Stage VTT à Loudenvielle - Haut des pistes de DH" },
+  { src: "/carousel/5.avif", alt: "Opération casque jaunes - Tour de France 2025" },
+  { src: "/carousel/6.avif", alt: "Photo de groupe VTT - Foret de Eaunes" },
+  { src: "/carousel/7.avif", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
+  { src: "/carousel/8.avif", alt: "Interclubs VTT - Lagrâce-Dieu" },
+  { src: "/carousel/9.avif", alt: "Photo de groupe - Stage VTT à Loudenvielle" },
+  { src: "/carousel/10.avif", alt: "Photo coureur - FestiBike 2023" },
 ];
 
 const secretImages = [
-  { src: "/Secret/1.jpeg", alt: "Secret 1" },
-  { src: "/Secret/2.JPG", alt: "Secret 2" },
-  { src: "/Secret/3.JPG", alt: "Secret 3" },
+  { src: "/Secret/1.avif", alt: "Secret 1" },
+  { src: "/Secret/2.avif", alt: "Secret 2" },
+  { src: "/Secret/3.avif", alt: "Secret 3" },
 ];
 
 const secretSequence = [0, 1, 2, 1];
@@ -231,7 +231,7 @@ export default function Home(props: any) {
               Faites défiler
             </span>
           </div>
-          <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pr-2 [scrollbar-width:thin]">
+          <div className="carousel-scroll mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 pr-2">
             {carouselImages.map((image, index) => (
               <div
                 key={image.src}

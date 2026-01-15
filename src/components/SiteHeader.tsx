@@ -30,7 +30,7 @@ export default function SiteHeader({ activePage, onLogoClick }: SiteHeaderProps)
               className="rounded-2xl p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
               <Image
-                src="/as-muret-logo.png"
+                src="/as-muret-logo.avif"
                 alt="Logo AS Muret Cycliste"
                 width={140}
                 height={80}
@@ -43,7 +43,7 @@ export default function SiteHeader({ activePage, onLogoClick }: SiteHeaderProps)
               className="rounded-2xl p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
               <Image
-                src="/as-muret-logo.png"
+                src="/as-muret-logo.avif"
                 alt="Logo AS Muret Cycliste"
                 width={140}
                 height={80}
