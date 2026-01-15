@@ -11,7 +11,7 @@ export default function ActivitesPage(props: any) {
   // #endregion
   return (
     <div className="bg-zinc-50 text-zinc-900">
-      <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-12 px-6 py-14 sm:px-10 lg:gap-16 lg:px-16">
+      <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-14 sm:px-10 lg:gap-16 lg:px-16">
         <SiteHeader activePage="activites" />
 
         <div>
@@ -155,23 +155,6 @@ export default function ActivitesPage(props: any) {
           </div>
         </section>
 
-        <footer className="border-t border-zinc-200 pt-6 text-sm text-zinc-500">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <span>
-              AS Muret Cycliste · Route · VTT · Cyclocross · Cyclosport · Gravel
-            </span>
-            <span className="text-xs text-zinc-400">
-              Site réalisé par Enzo Fournet ·{" "}
-              <a href="mailto:enzofournet31@gmail.com" className="hover:text-zinc-600">
-                enzofournet31@gmail.com
-              </a>{" "}
-              ·{" "}
-              <a href="tel:+33783723926" className="hover:text-zinc-600">
-                07 83 72 39 26
-              </a>
-            </span>
-          </div>
-        </footer>
       </main>
     </div>
   );
