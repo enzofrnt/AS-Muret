@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const disciplines = [
@@ -45,20 +48,59 @@ const carouselImages = [
   { src: "/carousel/10.jpg", alt: "Sortie gravel" },
 ];
 
+const secretImages = [
+  { src: "/Secret/1.jpeg", alt: "Secret 1" },
+  { src: "/Secret/2.JPG", alt: "Secret 2" },
+  { src: "/Secret/3.JPG", alt: "Secret 3" },
+];
+
+const secretSequence = [0, 1, 2, 1];
+
 export default function Home() {
+  const [secretActive, setSecretActive] = useState(false);
+  const [secretIndex, setSecretIndex] = useState(0);
+  const logoClickCount = useRef(0);
+
+  useEffect(() => {
+    if (!secretActive) return;
+
+    const interval = setInterval(() => {
+      setSecretIndex((current) => (current + 1) % secretSequence.length);
+    }, 200);
+
+    return () => clearInterval(interval);
+  }, [secretActive]);
+
+  const handleLogoClick = () => {
+    logoClickCount.current += 1;
+    if (logoClickCount.current >= 50 && !secretActive) {
+      setSecretIndex(0);
+      setSecretActive(true);
+    }
+  };
+
+  const secretFrame = secretSequence[secretIndex % secretSequence.length];
+
   return (
     <div className="bg-zinc-50 text-zinc-900">
       <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-12 px-6 py-14 sm:px-10 lg:gap-16 lg:px-16">
         <section className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4">
-              <Image
-                src="/as-muret-logo.png"
-                alt="Logo AS Muret Cycliste"
-                width={140}
-                height={80}
-                priority
-              />
+              <button
+                type="button"
+                aria-label="Logo AS Muret Cycliste"
+                onClick={handleLogoClick}
+                className="rounded-2xl p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              >
+                <Image
+                  src="/as-muret-logo.png"
+                  alt="Logo AS Muret Cycliste"
+                  width={140}
+                  height={80}
+                  priority
+                />
+              </button>
               <span className="whitespace-nowrap rounded-full bg-blue-50 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-blue-700">
                 Club cycliste & VTT depuis 1962
               </span>
@@ -266,9 +308,49 @@ export default function Home() {
         </section>
 
         <footer className="border-t border-zinc-200 pt-6 text-sm text-zinc-500">
-          AS Muret Cycliste · Route · VTT · Cyclocross · Cyclosport · Gravel
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <span>
+              AS Muret Cycliste · Route · VTT · Cyclocross · Cyclosport · Gravel
+            </span>
+            <span className="text-xs text-zinc-400">
+              Site réalisé par Enzo Fournet · enzofournet31@gmail.com · 07 83 72
+              39 26
+            </span>
+          </div>
         </footer>
       </main>
+      {secretActive && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-900/60 px-6 py-10"
+          onClick={() => setSecretActive(false)}
+          role="button"
+          tabIndex={-1}
+          aria-label="Fermer le secret"
+        >
+          <div
+            className="relative w-full max-w-xl overflow-hidden rounded-3xl bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setSecretActive(false)}
+              aria-label="Fermer la fenêtre"
+              className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white text-lg font-semibold text-zinc-800 shadow-md transition hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              ✕
+            </button>
+            <div className="relative h-72 w-full sm:h-96">
+              <Image
+                src={secretImages[secretFrame].src}
+                alt={secretImages[secretFrame].alt}
+                fill
+                sizes="(min-width: 640px) 640px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
