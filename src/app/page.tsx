@@ -47,7 +47,7 @@ export default function Home() {
                 height={80}
                 priority
               />
-              <span className="rounded-full bg-blue-50 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-blue-700">
+              <span className="whitespace-nowrap rounded-full bg-blue-50 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-blue-700">
                 Club cycliste & VTT depuis 1962
               </span>
             </div>
@@ -59,15 +59,15 @@ export default function Home() {
               rassemble passion, performance et convivialité autour de la route,
               du VTT, du cyclocross, du cyclosport et du gravel.
             </p>
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-nowrap">
               <a
-                className="flex items-center justify-center rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800"
+                className="flex items-center justify-center whitespace-nowrap rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800"
                 href="#contact"
               >
                 Nous contacter
               </a>
               <a
-                className="flex items-center justify-center rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-white"
+                className="flex items-center justify-center whitespace-nowrap rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-white"
                 href="/20250506%20Presentation%20%20AS%20%20Muret%20Cycl%20isme%20Route__%20%26%20Vtt%20-%20Mairie%20Muret%20.pdf"
                 target="_blank"
                 rel="noreferrer"
@@ -174,6 +174,25 @@ export default function Home() {
                 <li key={project}>• {project}</li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
+          <h2 className="text-2xl font-semibold">Nos partenaires</h2>
+          <p className="mt-2 text-sm text-zinc-600">
+            En cours d&apos;intégration - mocks temporaires.
+          </p>
+          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+            {["Partenaire A", "Partenaire B", "Partenaire C", "Partenaire D", "Partenaire E", "Partenaire F"].map(
+              (partner) => (
+                <div
+                  key={partner}
+                  className="flex items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-50 px-4 py-6 text-xs font-semibold uppercase tracking-wide text-zinc-500"
+                >
+                  {partner}
+                </div>
+              )
+            )}
           </div>
         </section>
 
