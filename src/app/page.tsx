@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import SiteHeader from "../components/SiteHeader";
 
 const disciplines = [
   "Route",
@@ -56,7 +58,12 @@ const secretImages = [
 
 const secretSequence = [0, 1, 2, 1];
 
-export default function Home() {
+export default function Home(props: any) {
+  // #region agent log
+  try {
+      fetch('http://127.0.0.1:7245/ingest/30dbd7b4-eca0-4a89-8873-ce565e0ab020',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'src/app/page.tsx:Home',message:'Home received props',data:{keys: Object.keys(props), hasParams: 'params' in props},timestamp:Date.now(),sessionId:'debug-session'})}).catch(()=>{});
+  } catch (e) {}
+  // #endregion
   const [secretActive, setSecretActive] = useState(false);
   const [secretIndex, setSecretIndex] = useState(0);
   const logoClickCount = useRef(0);
@@ -98,27 +105,9 @@ export default function Home() {
   return (
     <div className="bg-zinc-50 text-zinc-900">
       <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-12 px-6 py-14 sm:px-10 lg:gap-16 lg:px-16">
+        <SiteHeader activePage="home" onLogoClick={handleLogoClick} />
         <section className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-4">
-              <button
-                type="button"
-                aria-label="Logo AS Muret Cycliste"
-                onClick={handleLogoClick}
-                className="rounded-2xl p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-              >
-                <Image
-                  src="/as-muret-logo.png"
-                  alt="Logo AS Muret Cycliste"
-                  width={140}
-                  height={80}
-                  priority
-                />
-              </button>
-              <span className="whitespace-nowrap rounded-full bg-blue-50 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-blue-700">
-                Club cycliste & VTT depuis 1962
-              </span>
-            </div>
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
               AS Muret Cycliste
             </h1>
@@ -128,12 +117,18 @@ export default function Home() {
               du VTT, du cyclocross, du cyclosport et du gravel.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-nowrap">
-              <a
+              <Link
+                href="/rejoindre"
                 className="flex items-center justify-center whitespace-nowrap rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800"
-                href="#contact"
               >
-                Nous contacter
-              </a>
+                Rejoindre le club
+              </Link>
+              <Link
+                href="/activites"
+                className="flex items-center justify-center whitespace-nowrap rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-white"
+              >
+                Découvrir nos activités
+              </Link>
               <a
                 className="flex items-center justify-center whitespace-nowrap rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-400 hover:bg-white"
                 href="/20250506%20Presentation%20%20AS%20%20Muret%20Cycl%20isme%20Route__%20%26%20Vtt%20-%20Mairie%20Muret%20.pdf"
