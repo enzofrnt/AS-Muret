@@ -326,6 +326,26 @@ export default function Home(props: any) {
                 frameClass: "aspect-[3/2] max-w-[150px]",
                 description: "",
                 address: "",
+                phone: "",
+                email: "",
+              },
+              {
+                src: "/sponsor/axa-dauriac.webp",
+                alt: "Assurances Dauriac",
+                frameClass: "aspect-[3/2] max-w-[150px]",
+                description: "",
+                address: "",
+                phone: "",
+                email: "",
+              },
+              {
+                src: "/sponsor/ComElec.webp",
+                alt: "ComElec",
+                frameClass: "aspect-[3/2] max-w-[150px]",
+                description: "",
+                address: "",
+                phone: "",
+                email: "",
               },
               {
                 src: "/sponsor/atelier-chic-et-branche.webp",
@@ -333,6 +353,8 @@ export default function Home(props: any) {
                 frameClass: "aspect-[3/2] max-w-[150px]",
                 description: "Boutique de vêtements et accessoires de mode à prix abordable ",
                 address: "Galerie commerciale Intermarché, 6 Rue Danielle Casanova, 31600 Seysses",
+                phone: "05 62 23 43 03",
+                email: "",
               },
               {
                 src: "/sponsor/Credit-Mutuel-logo.webp",
@@ -340,13 +362,35 @@ export default function Home(props: any) {
                 frameClass: "aspect-[2/1] max-w-[170px]",
                 description: "Banque mutualiste partenaire du club",
                 address: "",
+                phone: "",
+                email: "",
+              },
+              {
+                src: "/sponsor/florisbigot.webp",
+                alt: "Bigot Floris",
+                frameClass: "aspect-[3/2] max-w-[150px]",
+                description: "",
+                address: "",
+                phone: "06.67.89.76.50",
+                email: "bigotfloris.multiservices@gmail.com",
               },
               {
                 src: "/sponsor/HG.webp",
-                alt: "HG",
+                alt: "Haute Garonne",
                 frameClass: "aspect-square max-w-[130px]",
                 description: "Soutiens institutionnel départemental",
                 address: "",
+                phone: "",
+                email: "",
+              },
+              {
+                src: "/sponsor/Macon.webp",
+                alt: "Ent Maçonnerie Générale",
+                frameClass: "aspect-[3/2] max-w-[150px]",
+                description: "",
+                address: "31600 Seysses",
+                phone: "05 61 56 92 78",
+                email: "",
               },
               {
                 src: "/sponsor/logo-villemuret.webp",
@@ -354,6 +398,8 @@ export default function Home(props: any) {
                 frameClass: "aspect-[4/3] max-w-[150px]",
                 description: "Collectivité qui soutient le club",
                 address: "",
+                phone: "",
+                email: "",
               },
               {
                 src: "/sponsor/Occitanie.webp",
@@ -361,13 +407,35 @@ export default function Home(props: any) {
                 frameClass: "aspect-[5/2] max-w-[180px]",
                 description: "Soutien institutionnel régional",
                 address: "",
+                phone: "",
+                email: "",
               },
               {
                 src: "/sponsor/SDB.webp",
-                alt: "SDB",
+                alt: "SDB Création",
                 frameClass: "aspect-square max-w-[130px]",
                 description: "Spécialiste dans la création ou la rénovation de salles de bains",
                 address: "33 Bd de Joffrery, 31600 Muret",
+                phone: "05 34 51 93 17",
+                email: "",
+              },
+              {
+                src: "/sponsor/stsi.webp",
+                alt: "STSI",
+                frameClass: "aspect-[3/2] max-w-[150px]",
+                description: "",
+                address: "",
+                phone: "",
+                email: "",
+              },
+              {
+                src: "/sponsor/velo-station.webp",
+                alt: "Vélo Station",
+                frameClass: "aspect-[4/3] max-w-[150px]",
+                description: "Vente et réparation de vélos et accessoires",
+                address: "30 Av. Jacques Douzans, 31600 Muret",
+                phone: "05 82 95 45 33",
+                email: "",
               },
             ].map((partner) => (
               <div
@@ -401,6 +469,22 @@ export default function Home(props: any) {
                         rel="noreferrer"
                       >
                         {partner.address}
+                      </a>
+                    ) : null}
+                    {partner.phone?.trim() ? (
+                      <a
+                        className="pointer-events-auto mt-1 block text-[10px] font-normal normal-case tracking-normal text-white/75 underline decoration-white/60 underline-offset-2 transition hover:text-white"
+                        href={`tel:${partner.phone.replace(/\s+/g, "")}`}
+                      >
+                        {partner.phone}
+                      </a>
+                    ) : null}
+                    {partner.email?.trim() ? (
+                      <a
+                        className="pointer-events-auto mt-1 block text-[10px] font-normal normal-case tracking-normal text-white/75 underline decoration-white/60 underline-offset-2 transition hover:text-white"
+                        href={`mailto:${partner.email}`}
+                      >
+                        {partner.email}
                       </a>
                     ) : null}
                   </span>
