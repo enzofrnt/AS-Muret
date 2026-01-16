@@ -324,33 +324,55 @@ export default function Home(props: any) {
                 src: "/sponsor/Actiglass.webp",
                 alt: "Actiglass",
                 frameClass: "aspect-[3/2] max-w-[150px]",
+                description: "",
+                address: "",
               },
               {
                 src: "/sponsor/atelier-chic-et-branche.webp",
                 alt: "Atelier Chic & Branche",
                 frameClass: "aspect-[3/2] max-w-[150px]",
+                description: "Boutique de vêtements et accessoires de mode à prix abordable ",
+                address: "Galerie commerciale Intermarché, 6 Rue Danielle Casanova, 31600 Seysses",
               },
               {
                 src: "/sponsor/Credit-Mutuel-logo.webp",
                 alt: "Crédit Mutuel",
                 frameClass: "aspect-[2/1] max-w-[170px]",
+                description: "Banque mutualiste partenaire du club",
+                address: "",
               },
-              { src: "/sponsor/HG.webp", alt: "HG", frameClass: "aspect-square max-w-[130px]" },
+              {
+                src: "/sponsor/HG.webp",
+                alt: "HG",
+                frameClass: "aspect-square max-w-[130px]",
+                description: "Soutiens institutionnel départemental",
+                address: "",
+              },
               {
                 src: "/sponsor/logo-villemuret.webp",
                 alt: "Ville de Muret",
                 frameClass: "aspect-[4/3] max-w-[150px]",
+                description: "Collectivité qui soutient le club",
+                address: "",
               },
               {
                 src: "/sponsor/Occitanie.webp",
                 alt: "Région Occitanie",
                 frameClass: "aspect-[5/2] max-w-[180px]",
+                description: "Soutien institutionnel régional",
+                address: "",
               },
-              { src: "/sponsor/SDB.webp", alt: "SDB", frameClass: "aspect-square max-w-[130px]" },
+              {
+                src: "/sponsor/SDB.webp",
+                alt: "SDB",
+                frameClass: "aspect-square max-w-[130px]",
+                description: "Spécialiste dans la création ou la rénovation de salles de bains",
+                address: "33 Bd de Joffrery, 31600 Muret",
+              },
             ].map((partner) => (
               <div
                 key={partner.src}
-                className="flex items-center justify-center rounded-2xl border border-zinc-200 bg-white px-4 py-5 shadow-sm"
+                className="group relative flex items-center justify-center overflow-hidden rounded-2xl border border-zinc-200 bg-white px-4 py-5 shadow-sm"
               >
                 <div className={`relative w-full ${partner.frameClass}`}>
                   <Image
@@ -360,6 +382,28 @@ export default function Home(props: any) {
                     sizes="180px"
                     className="object-contain"
                   />
+                </div>
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-zinc-900/75 px-3 text-center text-[11px] font-semibold uppercase tracking-wide text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  <span>
+                    {partner.alt}
+                    {partner.description?.trim() ? (
+                      <span className="mt-1 block text-[10px] font-medium normal-case tracking-normal text-white/85">
+                        {partner.description}
+                      </span>
+                    ) : null}
+                    {partner.address?.trim() ? (
+                      <a
+                        className="pointer-events-auto mt-1 block text-[10px] font-normal normal-case tracking-normal text-white/75 underline decoration-white/60 underline-offset-2 transition hover:text-white"
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                          partner.address
+                        )}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {partner.address}
+                      </a>
+                    ) : null}
+                  </span>
                 </div>
               </div>
             ))}
