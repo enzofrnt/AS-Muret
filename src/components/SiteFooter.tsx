@@ -30,7 +30,14 @@ export default function SiteFooter() {
         <div className="space-y-2 text-sm text-zinc-500">
           <div className="flex items-center gap-2">
             <span className="text-[10px] text-zinc-400">•</span>
-            <span>Site réalisé par Enzo Fournet</span>
+            <a
+              href="https://github.com/enzofrnt/AS-Muret/tree/main"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-zinc-600"
+            >
+              Site réalisé par Enzo Fournet
+            </a>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[10px] text-zinc-400">•</span>
