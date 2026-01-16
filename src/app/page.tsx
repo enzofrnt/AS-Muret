@@ -48,6 +48,13 @@ const carouselImages = [
   { src: "/carousel/8.avif", alt: "Interclubs VTT - Lagrâce-Dieu" },
   { src: "/carousel/9.avif", alt: "Photo de groupe - Stage VTT à Loudenvielle" },
   { src: "/carousel/10.avif", alt: "Photo coureur - FestiBike 2023" },
+  { src: "/carousel/11.avif", alt: "Nouvelle photo du club (11)" },
+  { src: "/carousel/12.avif", alt: "Nouvelle photo du club (12)" },
+  { src: "/carousel/13.avif", alt: "Nouvelle photo du club (13)" },
+  { src: "/carousel/14.avif", alt: "Nouvelle photo du club (14)" },
+  { src: "/carousel/15.avif", alt: "Nouvelle photo du club (15)" },
+  { src: "/carousel/16.avif", alt: "Nouvelle photo du club (16)" },
+  { src: "/carousel/17.avif", alt: "Nouvelle photo du club (17)" },
 ];
 
 const secretImages = [
@@ -58,12 +65,7 @@ const secretImages = [
 
 const secretSequence = [0, 1, 2, 1];
 
-export default function Home(props: any) {
-  // #region agent log
-  try {
-      fetch('http://127.0.0.1:7245/ingest/30dbd7b4-eca0-4a89-8873-ce565e0ab020',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'src/app/page.tsx:Home',message:'Home received props',data:{keys: Object.keys(props), hasParams: 'params' in props},timestamp:Date.now(),sessionId:'debug-session'})}).catch(()=>{});
-  } catch (e) {}
-  // #endregion
+export default function Home() {
   const [secretActive, setSecretActive] = useState(false);
   const [secretIndex, setSecretIndex] = useState(0);
   const logoClickCount = useRef(0);
