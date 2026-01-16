@@ -30,7 +30,7 @@ export default function ActivitesPage(props: any) {
             <div className="mt-4 space-y-4 text-base leading-7 text-zinc-600">
               <p>
                 L&apos;école VTT de l&apos;AS Muret Cycliste accueille chaque année
-                environ 20 jeunes de 10 à tant que c&apos;est possible. Nos éducateurs diplômés FFC
+                environ 20 jeunes de 10 ans à tant que c&apos;est possible. Nos éducateurs diplômés FFC
                 forment les jeunes aux bases du pilotage, de la sécurité et de
                 la compétition.
               </p>
