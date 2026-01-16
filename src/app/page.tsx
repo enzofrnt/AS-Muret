@@ -316,19 +316,53 @@ export default function Home(props: any) {
         <section className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
           <h2 className="text-2xl font-semibold">Nos partenaires</h2>
           <p className="mt-2 text-sm text-zinc-600">
-            En cours d&apos;intégration - mocks temporaires.
+            Ils soutiennent l&apos;AS Muret Cycliste au quotidien.
           </p>
           <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {["Partenaire A", "Partenaire B", "Partenaire C", "Partenaire D", "Partenaire E", "Partenaire F"].map(
-              (partner) => (
-                <div
-                  key={partner}
-                  className="flex items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-zinc-50 px-4 py-6 text-xs font-semibold uppercase tracking-wide text-zinc-500"
-                >
-                  {partner}
+            {[
+              {
+                src: "/sponsor/Actiglass.webp",
+                alt: "Actiglass",
+                frameClass: "aspect-[3/2] max-w-[150px]",
+              },
+              {
+                src: "/sponsor/atelier-chic-et-branche.webp",
+                alt: "Atelier Chic & Branche",
+                frameClass: "aspect-[3/2] max-w-[150px]",
+              },
+              {
+                src: "/sponsor/Credit-Mutuel-logo.webp",
+                alt: "Crédit Mutuel",
+                frameClass: "aspect-[2/1] max-w-[170px]",
+              },
+              { src: "/sponsor/HG.webp", alt: "HG", frameClass: "aspect-square max-w-[130px]" },
+              {
+                src: "/sponsor/logo-villemuret.webp",
+                alt: "Ville de Muret",
+                frameClass: "aspect-[4/3] max-w-[150px]",
+              },
+              {
+                src: "/sponsor/Occitanie.webp",
+                alt: "Région Occitanie",
+                frameClass: "aspect-[5/2] max-w-[180px]",
+              },
+              { src: "/sponsor/SDB.webp", alt: "SDB", frameClass: "aspect-square max-w-[130px]" },
+            ].map((partner) => (
+              <div
+                key={partner.src}
+                className="flex items-center justify-center rounded-2xl border border-zinc-200 bg-white px-4 py-5 shadow-sm"
+              >
+                <div className={`relative w-full ${partner.frameClass}`}>
+                  <Image
+                    src={partner.src}
+                    alt={partner.alt}
+                    fill
+                    sizes="180px"
+                    className="object-contain"
+                  />
                 </div>
-              )
-            )}
+              </div>
+            ))}
           </div>
         </section>
 
