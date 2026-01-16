@@ -80,17 +80,6 @@ export default function ActivitesPage(props: any) {
                 permettra d&apos;accompagner les jeunes dans leur progression sur
                 route.
               </p>
-              <div className="rounded-2xl bg-blue-50 p-4">
-                <h3 className="mb-2 font-semibold text-blue-900">
-                  Projet 2025
-                </h3>
-                <p className="text-sm text-blue-800">
-                  L&apos;école de route est en cours de création. Elle
-                  s&apos;adressera aux jeunes de 11 ans et plus, avec un
-                  encadrement adapté pour apprendre les techniques de route, la
-                  sécurité et la compétition.
-                </p>
-              </div>
               <div className="rounded-2xl bg-zinc-50 p-4">
                 <h3 className="mb-2 font-semibold text-zinc-900">
                   Objectifs

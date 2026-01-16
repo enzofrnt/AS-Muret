@@ -130,7 +130,7 @@ export default function Home() {
         <section className="flex flex-col gap-10 min-[1160px]:flex-row min-[1160px]:items-center min-[1160px]:justify-between">
           <div className="flex flex-col gap-6">
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-              AS Muret Cycliste
+              AS Muret Cycliste VTT
             </h1>
             <span className="inline-flex w-fit rounded-full bg-blue-50 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700 sm:text-sm">
               Club cycliste & VTT depuis 1962
