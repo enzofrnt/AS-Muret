@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
+import ContactSection from "../components/ContactSection";
 
 const disciplines = [
   "Route",
@@ -496,57 +497,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          id="contact"
-          className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm"
-        >
-          <h2 className="text-2xl font-semibold">Contact</h2>
-          <div className="mt-6 grid gap-6 text-sm text-zinc-600 sm:grid-cols-2">
-            <div>
-              <p
-                className="text-base font-semibold text-zinc-900"
-                onClick={handleDetartelageClick}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    handleDetartelageClick();
-                  }
-                }}
-                aria-label="Déclencher Détartelage"
-              >
-                Yannick Ferré
-              </p>
-              <p>Président</p>
-              <p>
-                <a href="tel:+33608522839" className="hover:text-blue-700">
-                  Tél. 06 08 52 28 39
-                </a>
-              </p>
-              <p>
-                <a href="mailto:yannickferre31@orange.fr" className="hover:text-blue-700">
-                  yannickferre31@orange.fr
-                </a>
-              </p>
-            </div>
-            <div>
-              <p className="text-base font-semibold text-zinc-900">
-                Gauthier Lopez-Camoche
-              </p>
-              <p>Communication / relation</p>
-              <p>
-                <a href="tel:+33683988757" className="hover:text-blue-700">
-                  Tél. 06 83 98 87 57
-                </a>
-              </p>
-              <p>
-                <a href="mailto:glopezcamoche@gmail.com" className="hover:text-blue-700">
-                  glopezcamoche@gmail.com
-                </a>
-              </p>
-            </div>
-          </div>
-        </section>
+        <ContactSection
+          sectionId="contact"
+          title="Contact"
+          columns={2}
+          onPresidentClick={handleDetartelageClick}
+        />
 
       </main>
       {secretActive && (

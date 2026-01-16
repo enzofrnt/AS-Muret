@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import SiteHeader from "../../components/SiteHeader";
+import ContactSection from "../../components/ContactSection";
 
 export default function RejoindrePage() {
   const activityOptions = [
@@ -605,43 +606,7 @@ export default function RejoindrePage() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
-          <h2 className="text-2xl font-semibold">Contact direct</h2>
-          <div className="mt-6 grid gap-6 text-sm text-zinc-600">
-            <div>
-              <p className="text-base font-semibold text-zinc-900">
-                Yannick Ferré
-              </p>
-              <p>Président</p>
-              <p>
-                <a href="tel:+33608522839" className="hover:text-blue-700">
-                  Tél. 06 08 52 28 39
-                </a>
-              </p>
-              <p>
-                <a href="mailto:yannickferre31@orange.fr" className="hover:text-blue-700">
-                  yannickferre31@orange.fr
-                </a>
-              </p>
-            </div>
-            <div>
-              <p className="text-base font-semibold text-zinc-900">
-                Gauthier Lopez-Camoche
-              </p>
-              <p>Communication / relation</p>
-              <p>
-                <a href="tel:+33683988757" className="hover:text-blue-700">
-                  Tél. 06 83 98 87 57
-                </a>
-              </p>
-              <p>
-                <a href="mailto:glopezcamoche@gmail.com" className="hover:text-blue-700">
-                  glopezcamoche@gmail.com
-                </a>
-              </p>
-            </div>
-          </div>
-        </section>
+        <ContactSection title="Contact direct" columns={1} />
 
       </main>
     </div>
