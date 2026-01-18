@@ -1,11 +1,12 @@
 import { and, asc, eq, gt, gte, lt, lte, sql } from "drizzle-orm";
 import { del, put } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import Image from "next/image";
 
 import { getDb } from "@/db/client";
 import { sponsors } from "@/db/schema";
+import ActionForm from "@/components/ActionForm";
+import ImagePreviewButton from "@/components/ImagePreviewButton";
 
 function toInt(value: FormDataEntryValue | null) {
   if (typeof value !== "string") return null;
@@ -109,7 +110,7 @@ async function createSponsorAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/sponsors");
-  redirect("/backoffice/sponsors");
+  return { ok: true };
 }
 
 async function updateSponsorAction(formData: FormData) {
@@ -204,7 +205,7 @@ async function updateSponsorAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/sponsors");
-  redirect("/backoffice/sponsors");
+  return { ok: true };
 }
 
 async function deleteSponsorAction(formData: FormData) {
@@ -231,7 +232,7 @@ async function deleteSponsorAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/sponsors");
-  redirect("/backoffice/sponsors");
+  return { ok: true };
 }
 
 export default async function BackofficeSponsorsPage() {
@@ -262,7 +263,17 @@ export default async function BackofficeSponsorsPage() {
             </span>
           </summary>
           <div className="px-6 pb-6">
-            <form action={createSponsorAction} className="grid gap-4">
+            <ActionForm
+              action={createSponsorAction}
+              className="grid gap-4"
+              feedback={{
+                loadingTitle: "Création du sponsor…",
+                loadingMessage: "Upload de l’image et mise à jour de la base.",
+                successTitle: "Création terminée",
+                successMessage: "Le sponsor a bien été ajouté.",
+                errorTitle: "Création impossible",
+              }}
+            >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label className="block text-sm font-medium text-zinc-700">
@@ -361,7 +372,7 @@ export default async function BackofficeSponsorsPage() {
               >
                 Ajouter
               </button>
-            </form>
+            </ActionForm>
           </div>
         </details>
 
@@ -369,7 +380,7 @@ export default async function BackofficeSponsorsPage() {
           {items.map((item) => (
             <div
               key={item.id}
-              className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm"
+              className="group overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm"
             >
               <div className="flex items-center justify-between gap-2 border-b border-zinc-100 px-4 py-3">
                 <div className="min-w-0">
@@ -380,23 +391,20 @@ export default async function BackofficeSponsorsPage() {
                     Ordre {item.sortOrder} • {item.isActive ? "Actif" : "Inactif"}
                   </p>
                 </div>
-                <a
-                  href={item.imageUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shrink-0 text-xs font-semibold text-blue-700 underline underline-offset-2"
-                >
-                  Ouvrir
-                </a>
               </div>
 
-              <div className="relative h-28 w-full bg-white">
+              <div className="relative h-24 w-full bg-white">
                 <Image
                   src={item.imageUrl}
                   alt={item.name}
                   fill
                   sizes="(min-width: 1024px) 320px, 50vw"
-                  className="object-contain p-3"
+                  className="object-contain p-4"
+                />
+                <ImagePreviewButton
+                  src={item.imageUrl}
+                  alt={item.name}
+                  label={`Agrandir le logo ${item.name}`}
                 />
               </div>
 
@@ -408,7 +416,17 @@ export default async function BackofficeSponsorsPage() {
                   </span>
                 </summary>
                 <div className="px-4 pb-4">
-                  <form action={updateSponsorAction} className="grid gap-3">
+                  <ActionForm
+                    action={updateSponsorAction}
+                    className="grid gap-3"
+                    feedback={{
+                      loadingTitle: "Enregistrement…",
+                      loadingMessage: "Mise à jour du sponsor en cours.",
+                      successTitle: "Modification terminée",
+                      successMessage: "Le sponsor a bien été mis à jour.",
+                      errorTitle: "Modification impossible",
+                    }}
+                  >
                     <input type="hidden" name="id" value={item.id} />
 
                     <div className="grid gap-3">
@@ -514,9 +532,19 @@ export default async function BackofficeSponsorsPage() {
                     >
                       Enregistrer
                     </button>
-                  </form>
+                  </ActionForm>
 
-                  <form action={deleteSponsorAction} className="mt-2">
+                  <ActionForm
+                    action={deleteSponsorAction}
+                    className="mt-2"
+                    feedback={{
+                      loadingTitle: "Suppression…",
+                      loadingMessage: "Suppression du sponsor et de l’image.",
+                      successTitle: "Suppression terminée",
+                      successMessage: "Le sponsor a bien été supprimé.",
+                      errorTitle: "Suppression impossible",
+                    }}
+                  >
                     <input type="hidden" name="id" value={item.id} />
                     <button
                       type="submit"
@@ -524,7 +552,7 @@ export default async function BackofficeSponsorsPage() {
                     >
                       Supprimer
                     </button>
-                  </form>
+                  </ActionForm>
                 </div>
               </details>
             </div>

@@ -1,4 +1,6 @@
 import SiteHeader from "@/components/SiteHeader";
+import { ActionFeedbackProvider } from "@/components/ActionFeedback";
+import { ImagePreviewProvider } from "@/components/ImagePreview";
 
 export default function BackofficeLayout({
   children,
@@ -10,7 +12,11 @@ export default function BackofficeLayout({
       <div className="mx-auto w-full max-w-6xl px-6 pt-8 sm:px-10 lg:px-16">
         <SiteHeader />
       </div>
-      <div className="mt-6 flex-1">{children}</div>
+      <div className="mt-6 flex-1">
+        <ActionFeedbackProvider>
+          <ImagePreviewProvider>{children}</ImagePreviewProvider>
+        </ActionFeedbackProvider>
+      </div>
     </div>
   );
 }

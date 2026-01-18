@@ -1,11 +1,12 @@
 import { and, asc, eq, gt, gte, lt, lte, sql } from "drizzle-orm";
 import { del, put } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import Image from "next/image";
 
 import { getDb } from "@/db/client";
 import { carouselImages } from "@/db/schema";
+import ActionForm from "@/components/ActionForm";
+import ImagePreviewButton from "@/components/ImagePreviewButton";
 
 function toInt(value: FormDataEntryValue | null) {
   if (typeof value !== "string") return null;
@@ -101,7 +102,7 @@ async function createCarouselAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/carousel");
-  redirect("/backoffice/carousel");
+  return { ok: true };
 }
 
 async function updateCarouselAction(formData: FormData) {
@@ -188,7 +189,7 @@ async function updateCarouselAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/carousel");
-  redirect("/backoffice/carousel");
+  return { ok: true };
 }
 
 async function deleteCarouselAction(formData: FormData) {
@@ -215,7 +216,7 @@ async function deleteCarouselAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/carousel");
-  redirect("/backoffice/carousel");
+  return { ok: true };
 }
 
 export default async function BackofficeCarouselPage() {
@@ -251,7 +252,17 @@ export default async function BackofficeCarouselPage() {
             </span>
           </summary>
           <div className="px-6 pb-6">
-            <form action={createCarouselAction} className="grid gap-4">
+            <ActionForm
+              action={createCarouselAction}
+              className="grid gap-4"
+              feedback={{
+                loadingTitle: "Ajout de l’image…",
+                loadingMessage: "Upload de l’image et mise à jour de la base.",
+                successTitle: "Création terminée",
+                successMessage: "L’image a bien été ajoutée.",
+                errorTitle: "Création impossible",
+              }}
+            >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label className="block text-sm font-medium text-zinc-700">
@@ -302,7 +313,7 @@ export default async function BackofficeCarouselPage() {
               >
                 Ajouter
               </button>
-            </form>
+            </ActionForm>
           </div>
         </details>
 
@@ -310,7 +321,7 @@ export default async function BackofficeCarouselPage() {
           {items.map((item) => (
             <div
               key={item.id}
-              className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm"
+              className="group overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm"
             >
               <div className="flex items-center justify-between gap-2 border-b border-zinc-100 px-4 py-3">
                 <div className="min-w-0">
@@ -321,14 +332,6 @@ export default async function BackofficeCarouselPage() {
                     Ordre {item.sortOrder} • {item.isActive ? "Actif" : "Inactif"}
                   </p>
                 </div>
-                <a
-                  href={item.imageUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shrink-0 text-xs font-semibold text-blue-700 underline underline-offset-2"
-                >
-                  Ouvrir
-                </a>
               </div>
 
               <div className="relative h-40 w-full bg-white">
@@ -338,6 +341,11 @@ export default async function BackofficeCarouselPage() {
                   fill
                   sizes="(min-width: 1024px) 320px, 50vw"
                   className="object-cover"
+                />
+                <ImagePreviewButton
+                  src={item.imageUrl}
+                  alt={item.alt}
+                  label={`Agrandir l'image ${item.alt}`}
                 />
               </div>
 
@@ -349,7 +357,17 @@ export default async function BackofficeCarouselPage() {
                   </span>
                 </summary>
                 <div className="px-4 pb-4">
-                  <form action={updateCarouselAction} className="grid gap-3">
+                  <ActionForm
+                    action={updateCarouselAction}
+                    className="grid gap-3"
+                    feedback={{
+                      loadingTitle: "Enregistrement…",
+                      loadingMessage: "Mise à jour de l’image en cours.",
+                      successTitle: "Modification terminée",
+                      successMessage: "L’image a bien été mise à jour.",
+                      errorTitle: "Modification impossible",
+                    }}
+                  >
                     <input type="hidden" name="id" value={item.id} />
 
                     <div>
@@ -401,9 +419,19 @@ export default async function BackofficeCarouselPage() {
                     >
                       Enregistrer
                     </button>
-                  </form>
+                  </ActionForm>
 
-                  <form action={deleteCarouselAction} className="mt-2">
+                  <ActionForm
+                    action={deleteCarouselAction}
+                    className="mt-2"
+                    feedback={{
+                      loadingTitle: "Suppression…",
+                      loadingMessage: "Suppression de l’image et de la base.",
+                      successTitle: "Suppression terminée",
+                      successMessage: "L’image a bien été supprimée.",
+                      errorTitle: "Suppression impossible",
+                    }}
+                  >
                     <input type="hidden" name="id" value={item.id} />
                     <button
                       type="submit"
@@ -411,7 +439,7 @@ export default async function BackofficeCarouselPage() {
                     >
                       Supprimer
                     </button>
-                  </form>
+                  </ActionForm>
                 </div>
               </details>
             </div>
