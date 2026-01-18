@@ -7,10 +7,6 @@ import ContactSection from "../../components/ContactSection";
 export default function RejoindrePage() {
   const activityOptions = [
     { value: "route", label: "Route" },
-    { value: "vtt", label: "VTT" },
-    { value: "cyclocross", label: "Cyclocross" },
-    { value: "cyclosport", label: "Cyclosport" },
-    { value: "gravel", label: "Gravel" },
     { value: "ecole-vtt", label: "Ecole VTT" },
     { value: "ecole-route", label: "Ecole Route" },
   ];
@@ -228,7 +224,7 @@ export default function RejoindrePage() {
                   </h3>
                   <ol className="space-y-2 text-sm text-blue-800">
                     <li>1. Contactez-nous via le formulaire</li>
-                    <li>2. Échange avec un membre du bureau</li>
+                    <li>2. Échange avec un membre du club</li>
                     <li>3. Participation à une sortie d&apos;essai</li>
                     <li>4. Adhésion et intégration au club</li>
                   </ol>
@@ -246,25 +242,22 @@ export default function RejoindrePage() {
               <h2 className="text-2xl font-semibold">Disciplines et activités</h2>
               <div className="mt-4 space-y-3 text-base leading-7 text-zinc-600">
                 <p>
-                  Le club propose plusieurs disciplines pour répondre à tous les
-                  goûts :
+                  Le club propose les activités suivantes :
                 </p>
                 <div className="grid gap-3">
-                  {["Route", "VTT", "Cyclocross", "Cyclosport", "Gravel"].map(
-                    (discipline) => (
-                      <div
-                        key={discipline}
-                        className="rounded-xl bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700"
-                      >
-                        {discipline}
-                      </div>
-                    )
-                  )}
+                  {["Route", "École VTT", "École Route"].map((discipline) => (
+                    <div
+                      key={discipline}
+                      className="rounded-xl bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700"
+                    >
+                      {discipline}
+                    </div>
+                  ))}
                 </div>
                 <p className="mt-4 text-sm">
-                  Chaque discipline dispose d&apos;un encadrement adapté et
-                  d&apos;un calendrier d&apos;activités spécifique. Vous pouvez
-                  pratiquer une ou plusieurs disciplines selon vos envies.
+                  Encadrement adapté et calendrier spécifique selon
+                  l&apos;activité. Vous pouvez sélectionner une ou plusieurs
+                  activités selon votre profil.
                 </p>
               </div>
             </div>

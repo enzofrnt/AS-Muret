@@ -41,21 +41,21 @@ const projects = [
 
 const carouselImages = [
   { src: "/carousel/1.avif", alt: "Cadet Junior Tour de France 2025" },
-  { src: "/carousel/2.avif", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
-  { src: "/carousel/3.avif", alt: "Stage VTT à Loudenvielle - Haut des pistes de DH" },
-  { src: "/carousel/5.avif", alt: "Opération casque jaunes - Tour de France 2025" },
   { src: "/carousel/6.avif", alt: "Photo de groupe VTT - Foret de Eaunes" },
-  { src: "/carousel/7.avif", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
-  { src: "/carousel/8.avif", alt: "Interclubs VTT - Lagrâce-Dieu" },
-  { src: "/carousel/9.avif", alt: "Photo de groupe - Stage VTT à Loudenvielle" },
   { src: "/carousel/10.avif", alt: "Photo coureur - FestiBike 2023" },
-  { src: "/carousel/11.avif", alt: "Nouvelle photo du club (11)" },
-  { src: "/carousel/12.avif", alt: "Nouvelle photo du club (12)" },
-  { src: "/carousel/13.avif", alt: "Nouvelle photo du club (13)" },
-  { src: "/carousel/14.avif", alt: "Nouvelle photo du club (14)" },
-  { src: "/carousel/15.avif", alt: "Nouvelle photo du club (15)" },
-  { src: "/carousel/16.avif", alt: "Nouvelle photo du club (16)" },
-  { src: "/carousel/17.avif", alt: "Nouvelle photo du club (17)" },
+  { src: "/carousel/2.avif", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
+  { src: "/carousel/15.avif", alt: "Victoire course" },
+  { src: "/carousel/16.avif", alt: "Photo de groupe - Sortie Route" },
+  { src: "/carousel/5.avif", alt: "Opération casque jaunes - Tour de France 2025" },
+  { src: "/carousel/8.avif", alt: "Interclubs VTT - Lagrâce-Dieu" },
+  { src: "/carousel/12.avif", alt: "Photo de groupe - Sortie Route" },
+  { src: "/carousel/3.avif", alt: "Stage VTT à Loudenvielle - Haut des pistes de DH" },
+  { src: "/carousel/9.avif", alt: "Photo de groupe - Stage VTT à Loudenvielle" },
+  { src: "/carousel/11.avif", alt: "Photo accompagnement avec la voiture du club" },
+  { src: "/carousel/14.avif", alt: "Photo sur le départ de la course organisée par le club" },
+  { src: "/carousel/7.avif", alt: "Stage VTT à Loudenvielle - Col de Val Louron-Azet" },
+  { src: "/carousel/13.avif", alt: "Photo de groupe - Sortie Route" },
+  { src: "/carousel/17.avif", alt: "Photo de groupe - Sortie Route" },
 ];
 
 const secretImages = [
@@ -177,8 +177,8 @@ export default function Home() {
               <p className="text-sm text-zinc-600">par an parcourus</p>
             </div>
             <div className="rounded-2xl bg-zinc-50 p-4">
-              <p className="text-2xl font-semibold">14 victoires</p>
-              <p className="text-sm text-zinc-600">en 2024</p>
+              <p className="text-2xl font-semibold">30 victoires</p>
+              <p className="text-sm text-zinc-600">en 2025</p>
             </div>
           </div>
         </section>
@@ -224,8 +224,17 @@ export default function Home() {
               ))}
             </ul>
             <div className="mt-6 rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-600">
-              École VTT : 20 jeunes de 10 à 17 ans formés chaque année aux bases
-              du pilotage et de la sécurité.
+              <strong>École VTT :</strong> ~20 jeunes de 10 à 17 ans formés chaque
+              année au pilotage (position, freinage, trajectoires) et à la
+              sécurité. Les séances alternent travail technique et mise en
+              pratique sur des passages plus techniques, pour progresser
+              sereinement.
+            </div>
+            <div className="mt-2 rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-600">
+              <strong>École Route :</strong> pour les jeunes à partir de 11 ans,
+              apprentissage des bases du cyclisme sur route (sécurité routière,
+              roulage en groupe, relais/abris, gestion de l’effort) afin de
+              gagner en confiance et en endurance.
             </div>
           </div>
         </section>
@@ -342,12 +351,21 @@ export default function Home() {
                 email: "",
               },
               {
+                src: "/sponsor/axial.webp",
+                alt: "Axial Profession Carrossier",
+                frameClass: "aspect-[3/2] max-w-[170px]",
+                description: "Atelier de carrosserie automobile à Muret",
+                address: "Z.I. Sans Souci, 6 Rue Aristide Berges, 31600 Muret",
+                phone: "05 61 51 02 59",
+                email: "",
+              },
+              {
                 src: "/sponsor/ComElec.webp",
-                alt: "ComElec",
+                alt: "Comminges Electricité",
                 frameClass: "aspect-[3/2] max-w-[150px]",
-                description: "",
-                address: "",
-                phone: "",
+                description: "Électricien à Muret",
+                address: "44 Rue de Marclan, 31600 Muret",
+                phone: "05 61 08 16 18",
                 email: "",
               },
               {
@@ -438,6 +456,15 @@ export default function Home() {
                 description: "Vente et réparation de vélos et accessoires",
                 address: "30 Av. Jacques Douzans, 31600 Muret",
                 phone: "05 82 95 45 33",
+                email: "",
+              },
+              {
+                src: "/sponsor/secretarie31.webp",
+                alt: "Solutions Secrétariat 31",
+                frameClass: "aspect-[3/2] max-w-[170px]",
+                description: "",
+                address: "",
+                phone: "",
                 email: "",
               },
             ].map((partner) => (
