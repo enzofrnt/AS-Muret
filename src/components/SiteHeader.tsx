@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type ActivePage = "home" | "activites" | "rejoindre";
 
@@ -17,6 +17,40 @@ const navItemClass =
 export default function SiteHeader({ activePage, onLogoClick }: SiteHeaderProps) {
   const isActive = (page: ActivePage) => activePage === page;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [logoutPending, setLogoutPending] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const run = async () => {
+      try {
+        const res = await fetch("/api/admin/session", { cache: "no-store" });
+        if (!res.ok) return;
+        const data = (await res.json()) as { isAdmin?: boolean };
+        if (!cancelled) setIsAdmin(!!data.isAdmin);
+      } catch {
+        // ignore
+      }
+    };
+
+    run();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      setLogoutPending(true);
+      await fetch("/api/admin/logout", { method: "POST" });
+    } finally {
+      setLogoutPending(false);
+      setIsAdmin(false);
+      window.location.href = "/";
+    }
+  };
 
   return (
     <header className="relative flex flex-col gap-4 min-[891px]:flex-row min-[891px]:items-center min-[891px]:justify-between">
@@ -101,6 +135,25 @@ export default function SiteHeader({ activePage, onLogoClick }: SiteHeaderProps)
         >
           Rejoindre le club
         </Link>
+
+        {isAdmin ? (
+          <>
+            <Link
+              href="/backoffice"
+              className="rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-50 w-full text-center min-[891px]:w-auto min-[891px]:text-left"
+            >
+              Backoffice
+            </Link>
+            <button
+              type="button"
+              onClick={handleLogout}
+              disabled={logoutPending}
+              className="rounded-full border border-red-200 bg-white px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-50 disabled:opacity-60 w-full text-center min-[891px]:w-auto min-[891px]:text-left"
+            >
+              {logoutPending ? "Déconnexion..." : "Se déconnecter"}
+            </button>
+          </>
+        ) : null}
       </nav>
     </header>
   );

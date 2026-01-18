@@ -45,6 +45,12 @@ export default function SiteFooter() {
               contact@enzo-frnt.fr
             </a>
           </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] text-zinc-400">•</span>
+            <a href="/backoffice" className="hover:text-zinc-600">
+              Admin
+            </a>
+          </div>
         </div>
       </div>
     </footer>
