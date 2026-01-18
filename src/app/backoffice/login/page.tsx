@@ -6,6 +6,7 @@ import {
   createAdminSessionToken,
   getAdminSessionCookieOptions,
 } from "@/backoffice/session";
+import PasswordField from "@/components/PasswordField";
 
 function safeNextUrl(value: unknown) {
   if (typeof value !== "string") return "/backoffice";
@@ -60,26 +61,13 @@ export default async function BackofficeLoginPage({
           <form action={loginAction} className="space-y-4">
             <input type="hidden" name="next" value={nextUrl} />
 
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-zinc-700"
-              >
-                Mot de passe
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                className="mt-1 w-full rounded-lg border border-zinc-300 px-4 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              {hasError ? (
-                <p className="mt-2 text-sm text-red-600">
-                  Mot de passe incorrect.
-                </p>
-              ) : null}
-            </div>
+            <PasswordField
+              name="password"
+              label="Mot de passe"
+              required
+              autoFocus
+              error={hasError ? "Mot de passe incorrect." : null}
+            />
 
             <button
               type="submit"
