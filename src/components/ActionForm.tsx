@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useActionFeedback } from "./ActionFeedback";
 
 type Props = {
-  action: (formData: FormData) => Promise<unknown>;
+  action: (formData: FormData) => void | Promise<void>;
   feedback: {
     loadingTitle: string;
     loadingMessage?: string;

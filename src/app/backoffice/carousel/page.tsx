@@ -102,7 +102,6 @@ async function createCarouselAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/carousel");
-  return { ok: true };
 }
 
 async function updateCarouselAction(formData: FormData) {
@@ -189,7 +188,6 @@ async function updateCarouselAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/carousel");
-  return { ok: true };
 }
 
 async function deleteCarouselAction(formData: FormData) {
@@ -216,7 +214,6 @@ async function deleteCarouselAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/carousel");
-  return { ok: true };
 }
 
 export default async function BackofficeCarouselPage() {

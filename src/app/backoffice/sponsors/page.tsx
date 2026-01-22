@@ -110,7 +110,6 @@ async function createSponsorAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/sponsors");
-  return { ok: true };
 }
 
 async function updateSponsorAction(formData: FormData) {
@@ -205,7 +204,6 @@ async function updateSponsorAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/sponsors");
-  return { ok: true };
 }
 
 async function deleteSponsorAction(formData: FormData) {
@@ -232,7 +230,6 @@ async function deleteSponsorAction(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/backoffice/sponsors");
-  return { ok: true };
 }
 
 export default async function BackofficeSponsorsPage() {

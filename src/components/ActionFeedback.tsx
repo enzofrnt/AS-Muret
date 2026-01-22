@@ -23,7 +23,7 @@ type ActionFeedbackOptions = {
 
 type Ctx = {
   runAction: (
-    action: (formData: FormData) => Promise<unknown>,
+    action: (formData: FormData) => void | Promise<void>,
     formData: FormData,
     options: ActionFeedbackOptions
   ) => Promise<void>;
