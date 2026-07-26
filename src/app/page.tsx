@@ -5,6 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import ContactSection from "../components/ContactSection";
+import ProgressiveImage from "../components/ProgressiveImage";
+import {
+  carouselLqipSrc,
+  carouselMediumSrc,
+} from "../lib/carousel-images";
 
 const disciplines = [
   "Route",
@@ -263,12 +268,14 @@ export default function Home() {
                   aria-label={`Agrandir ${image.alt}`}
                   className="block w-full"
                 >
-                  <div className="relative h-40 w-full sm:h-48">
-                    <Image
-                      src={image.src}
+                  <div className="relative h-40 w-full bg-mc-badge/50 sm:h-48">
+                    <ProgressiveImage
+                      src={carouselMediumSrc(image.src)}
+                      placeholderSrc={carouselLqipSrc(image.src)}
                       alt={image.alt}
                       fill
                       sizes="(min-width: 640px) 260px, 220px"
+                      quality={70}
                       className="object-cover"
                     />
                   </div>
@@ -600,13 +607,20 @@ export default function Home() {
             >
               ›
             </button>
-            <div className="relative h-[70vh] w-full bg-zinc-100">
-              <Image
+            <div className="relative h-[70vh] w-full bg-mc-badge/40">
+              <ProgressiveImage
+                key={carouselImages[carouselIndex].src}
                 src={carouselImages[carouselIndex].src}
+                mediumSrc={carouselMediumSrc(carouselImages[carouselIndex].src)}
+                placeholderSrc={carouselLqipSrc(
+                  carouselImages[carouselIndex].src
+                )}
                 alt={carouselImages[carouselIndex].alt}
                 fill
                 sizes="(min-width: 1024px) 960px, 100vw"
-                className="object-contain"
+                quality={90}
+                priority
+                objectFit="contain"
               />
             </div>
             <div className="px-6 py-4 text-center text-sm text-zinc-600">
