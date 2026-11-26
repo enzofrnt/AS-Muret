@@ -4,7 +4,7 @@ import { useState } from "react";
 import SiteHeader from "../../components/SiteHeader";
 
 export default function RejoindrePage() {
-  const contactEmail = "asmuretcycliste@gmail.fr";
+  const contactEmail = "asmuretcycliste@gmail.com";
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyEmail = async () => {
