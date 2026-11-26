@@ -27,6 +27,7 @@ export default function ContactForm() {
   return <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
     <h2 className="text-2xl font-semibold">Nous contacter</h2>
     <p className="mt-4 leading-7 text-zinc-600">Pour une demande concernant votre enfant, pensez à nous préciser son prénom, son âge, son expérience à vélo et la discipline qui l’intéresse (route ou VTT).</p>
+    <p className="mt-3 text-zinc-600">Vous pouvez aussi nous écrire à <a className="text-blue-700 underline" href="mailto:asmuretcycliste@gmail.com">asmuretcycliste@gmail.com</a>.</p>
     <form onSubmit={submit} className="mt-6 space-y-4">
       <div><label htmlFor="name" className="font-medium">Nom et prénom *</label><input className={inputClass} id="name" name="name" autoComplete="name" required maxLength={120} /></div>
       <div><label htmlFor="email" className="font-medium">Adresse email *</label><input className={inputClass} id="email" name="email" type="email" autoComplete="email" required maxLength={254} /></div>
