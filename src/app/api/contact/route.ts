@@ -38,6 +38,14 @@ export async function POST(request: Request) {
     });
     const result = await verification.json();
     if (!verification.ok || result.success !== true || result.action !== "contact" || !allowedHosts.has(result.hostname)) throw new Error("verification failed");
+    if (process.env.VERCEL_ENV === "preview") {
+      const replay = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+        method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ secret, response: token }), signal: AbortSignal.timeout(10000),
+      });
+      const replayResult = await replay.json();
+      if (!replay.ok || replayResult.success !== false || !replayResult["error-codes"]?.includes("timeout-or-duplicate")) throw new Error("replay check failed");
+    }
   } catch {
     return NextResponse.json({ error: "La vérification antispam a échoué. Réessayez." }, { status: 403 });
   }
