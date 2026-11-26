@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type ProgressiveImageProps = {
   src: string;
@@ -22,7 +22,11 @@ type ProgressiveImageProps = {
  * Affiche d'abord un aperçu flou (LQIP), puis éventuellement une version
  * moyenne, puis la version haute qualité — sans case vide pendant le chargement.
  */
-export default function ProgressiveImage({
+export default function ProgressiveImage(props: ProgressiveImageProps) {
+  return <ProgressiveImageContent key={JSON.stringify([props.src, props.mediumSrc])} {...props} />;
+}
+
+function ProgressiveImageContent({
   src,
   mediumSrc,
   placeholderSrc,
@@ -38,12 +42,6 @@ export default function ProgressiveImage({
   const [highReady, setHighReady] = useState(false);
   const [loadFull, setLoadFull] = useState(!mediumSrc);
   const fitClass = objectFit === "contain" ? "object-contain" : "object-cover";
-
-  useEffect(() => {
-    setMediumReady(false);
-    setHighReady(false);
-    setLoadFull(!mediumSrc);
-  }, [src, mediumSrc]);
 
   return (
     <div
