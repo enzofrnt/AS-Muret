@@ -25,6 +25,22 @@ export async function POST(request: Request) {
   if (!name || name.length > 120 || /[\r\n]/.test(name) || !emailPattern.test(email) || email.length > 254 || phone.length > 40 || /[\r\n]/.test(phone) || !message || message.length > 5000) {
     return NextResponse.json({ error: "Vérifiez les champs du formulaire." }, { status: 400 });
   }
+  const token = field("token");
+  const secret = process.env.TURNSTILE_SECRET;
+  const allowedHosts = new Set((process.env.TURNSTILE_HOSTNAMES ?? "").split(",").map((host) => host.trim()).filter(Boolean));
+  if (!secret || !token || token.length > 2048 || allowedHosts.size === 0) {
+    return NextResponse.json({ error: "La vérification antispam a échoué. Réessayez." }, { status: 403 });
+  }
+  try {
+    const verification = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret, response: token }), signal: AbortSignal.timeout(10000),
+    });
+    const result = await verification.json();
+    if (!verification.ok || result.success !== true || result.action !== "contact" || !allowedHosts.has(result.hostname)) throw new Error("verification failed");
+  } catch {
+    return NextResponse.json({ error: "La vérification antispam a échoué. Réessayez." }, { status: 403 });
+  }
   const { RESEND_API_KEY, CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL } = process.env;
   if (!RESEND_API_KEY || !CONTACT_FROM_EMAIL || !CONTACT_TO_EMAIL) {
     return NextResponse.json({ error: "Le formulaire est momentanément indisponible." }, { status: 503 });
