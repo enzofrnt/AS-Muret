@@ -1,22 +1,7 @@
-"use client";
-
-import { useState } from "react";
+import ContactForm from "../../components/ContactForm";
 import SiteHeader from "../../components/SiteHeader";
 
 export default function RejoindrePage() {
-  const contactEmail = "asmuretcycliste@gmail.fr";
-  const [isCopied, setIsCopied] = useState(false);
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(contactEmail);
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2500);
-    } catch {
-      setIsCopied(false);
-    }
-  };
-
   return (
     <div className="bg-zinc-50 text-zinc-900">
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 pt-8 pb-14 sm:px-10 lg:gap-16 lg:px-16">
@@ -39,7 +24,7 @@ export default function RejoindrePage() {
               <div className="mt-4 space-y-4 text-base leading-7 text-zinc-600">
                 <p>
                   Pour rejoindre l&apos;AS Muret Cycliste, contactez-nous
-                  directement par email. Nous vous répondrons rapidement pour
+                  grâce au formulaire ci-dessous. Nous vous répondrons rapidement pour
                   discuter de vos attentes et vous présenter le club.
                 </p>
                 <div className="rounded-2xl bg-blue-50 p-4">
@@ -47,7 +32,7 @@ export default function RejoindrePage() {
                     Processus d&apos;adhésion
                   </h3>
                   <ol className="space-y-2 text-sm text-blue-800">
-                    <li>1. Contactez-nous par email</li>
+                    <li>1. Contactez-nous via le formulaire</li>
                     <li>2. Échange avec un membre du club</li>
                     <li>3. Participation à une sortie d&apos;essai</li>
                     <li>4. Adhésion et intégration au club</li>
@@ -87,27 +72,7 @@ export default function RejoindrePage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <h2 className="text-2xl font-semibold">Contact</h2>
-            <p className="mt-4 text-base leading-7 text-zinc-600">
-              Pour nous contacter, utilisez cette adresse email.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={`mailto:${contactEmail}`}
-                className="rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              >
-                {contactEmail}
-              </a>
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-zinc-700 transition hover:border-zinc-400 hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2"
-              >
-                {isCopied ? "Email copié" : "Copier l'email"}
-              </button>
-            </div>
-          </div>
+          <ContactForm />
         </section>
       </main>
     </div>
