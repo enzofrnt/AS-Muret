@@ -12,8 +12,8 @@ export default function RejoindrePage() {
           Rejoindre le club
         </h1>
           <p className="mt-4 text-lg leading-8 text-zinc-600">
-            Découvrez comment le club s&apos;organise et prenez contact avec
-            nous pour nous rejoindre.
+            Découvrez nos activités et rejoignez-nous en vous inscrivant sur
+            HelloAsso.
           </p>
         </div>
 
@@ -23,19 +23,25 @@ export default function RejoindrePage() {
               <h2 className="text-2xl font-semibold">Comment nous rejoindre ?</h2>
               <div className="mt-4 space-y-4 text-base leading-7 text-zinc-600">
                 <p>
-                  Pour rejoindre l&apos;AS Muret Cycliste, contactez-nous
-                  grâce au formulaire ci-dessous. Nous vous répondrons rapidement pour
-                  discuter de vos attentes et vous présenter le club.
+                  Retrouvez notre association sur HelloAsso pour vous inscrire
+                  au club. Une question avant de vous lancer ? Contactez-nous
+                  grâce au formulaire ci-dessous.
                 </p>
+                <a
+                  href="https://www.helloasso.com/associations/amicale-sportive-muret-cycliste"
+                  className="inline-flex items-center justify-center rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+                >
+                  S&apos;inscrire sur HelloAsso
+                </a>
                 <div className="rounded-2xl bg-blue-50 p-4">
                   <h3 className="mb-3 font-semibold text-blue-900">
                     Processus d&apos;adhésion
                   </h3>
                   <ol className="space-y-2 text-sm text-blue-800">
-                    <li>1. Contactez-nous via le formulaire</li>
+                    <li>1. Contactez-nous si vous avez des questions</li>
                     <li>2. Échange avec un membre du club</li>
                     <li>3. Participation à une sortie d&apos;essai</li>
-                    <li>4. Adhésion et intégration au club</li>
+                    <li>4. Inscription sur HelloAsso et intégration au club</li>
                   </ol>
                 </div>
                 <p className="text-sm">
